@@ -21,7 +21,6 @@ import threading
 import traceback
 import os
 import time
-from torch._six import string_classes
 
 IS_WINDOWS = sys.platform == "win32"
 if IS_WINDOWS:
@@ -32,6 +31,8 @@ if sys.version_info[0] == 2:
     import Queue as queue
 else:
     import queue
+
+string_classes = (str, bytes)
 
 __all__ = ['SequentialDataLoader']
 
