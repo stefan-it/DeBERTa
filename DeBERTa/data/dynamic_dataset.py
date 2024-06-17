@@ -30,9 +30,9 @@ class DynamicDataset(Dataset):
     else:
       self.dataset_size = int(dataset_size)
 
-    self.shuffle = shuffle
+    self.shuffle = False
     index_buf = mmap.mmap(-1, self.dataset_size*8)
-    shuffle_idx = np.ndarray(shape=(self.dataset_size, ), buffer=index_buf, dtype=np.int)
+    shuffle_idx = np.ndarray(shape=(self.dataset_size, ), buffer=index_buf, dtype=int)
     shuffle_idx[:] = np.arange(self.dataset_size)[:]
     if self.shuffle:
       #rng = np.random.RandomState(0)
